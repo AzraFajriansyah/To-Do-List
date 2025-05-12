@@ -8,9 +8,22 @@ addTaskBtn.addEventListener("click", () => {
     if (taskText !== "") {
         const taskItem = document.createElement("div");
         taskItem.className = "task-item";
-        taskItem.textContent = taskText;
+        
+        const textSpan = document.createElement("span");
+        textSpan.textContent = taskText;
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Hapus";
+        deleteBtn.className = "delete-btn";
+
+        deleteBtn.addEventListener("click", () => {
+            taskList.removeChild(taskItem);
+        });
+
+        taskItem.appendChild(textSpan);
+        taskItem.appendChild(deleteBtn);
         taskList.appendChild(taskItem);
+        
         taskInput.value = "";
     }
 });
