@@ -88,3 +88,10 @@ header {
 .edit-btn:hover {
     background-color: #e0a800;
 }
+
+.task-category {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #666;
+    font-style: italic;
+}

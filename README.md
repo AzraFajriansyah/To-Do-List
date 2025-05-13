@@ -15,8 +15,12 @@ Each task appears below the input form after clicking "Add Task."
 A delete button for each task that removes it from the list when clicked.
 Tasks are saved in Local Storage so they persist even after the page is refreshed.
 
-13 May 2025
+Date: 13 May 2025
 Added the ability to edit existing tasks.
 Each task now has an "Edit" button.
 Clicking "Edit" allows users to modify the task content.
 After editing, the changes are updated in the list and saved to Local Storage.
+Users can now assign a category to each task (e.g., Work, Personal, Shopping).
+A dropdown menu or input is provided to select or enter a category.
+Tasks display their category label alongside the task name.
+Categories are also saved in Local Storage with each task.

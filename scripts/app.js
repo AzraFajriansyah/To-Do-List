@@ -7,20 +7,26 @@ window.addEventListener("load", loadTasks);
 
 addTaskBtn.addEventListener("click", () => {
     const taskText = taskInput.value.trim();
+    const taskCategory = document.getElementById("task-category").value;
 
     if (taskText !== "") {
-        addTaskToList(taskText);
-        saveTask(taskText);
+        const taskObj = { text: taskText, category: taskCategory };
+        addTaskToList(taskObj);
+        saveTask(taskObj);
         taskInput.value = "";
     }
 });
 
-function addTaskToList(taskText){
+function addTaskToList(task){
     const taskItem = document.createElement("div");
     taskItem.className = "task-item";
         
     const textSpan = document.createElement("span");
-    textSpan.textContent = taskText;
+    textSpan.textContent = task.text;
+
+    const categoryTag = document.createElement("span");
+    categoryTag.className = "task-category";
+    categoryTag.textContent = `[${task.category}]`;
 
     const actions = document.createElement("div");
     actions.className = "task-actions";
@@ -33,9 +39,9 @@ function addTaskToList(taskText){
     editBtn.addEventListener("click", () => {
         const newTask = prompt("Edit tugas:", textSpan.textContent);
         if (newTask && newTask.trim() !== "") {
-            updateTask(taskText, newTask.trim());
+            updateTask(task.text, newTask.trim());
             textSpan.textContent = newTask.trim();
-            taskText = newTask.trim(); // update referensi taskText
+            task.text = newTask.trim(); // update object
         }
     });
 
@@ -46,20 +52,21 @@ function addTaskToList(taskText){
 
     deleteBtn.addEventListener("click", () => {
         taskList.removeChild(taskItem);
-        removeTask(taskText);
+        removeTask(task.text);
     });
 
     actions.appendChild(editBtn);
     actions.appendChild(deleteBtn);
 
     taskItem.appendChild(textSpan);
+    taskItem.appendChild(categoryTag);
     taskItem.appendChild(actions);
     taskList.appendChild(taskItem);
 }
 
-function saveTask(taskText) {
+function saveTask(task) {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(taskText);
+    tasks.push(task);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -70,15 +77,15 @@ function loadTasks() {
 
 function removeTask(taskText) {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks = tasks.filter(task => task !== taskText);
+    tasks = tasks.filter(task => task.text !== taskText);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function updateTask(oldTask, newTask) {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const index = tasks.indexOf(oldTask);
+    const index = tasks.findIndex(task => task.text === oldTask);
     if (index !== -1) {
-        tasks[index] = newTask;
+        tasks[index].text = newTask;
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 }
