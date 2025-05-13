@@ -14,12 +14,9 @@ An "Add Task" button that adds the task to the list.
 Each task appears below the input form after clicking "Add Task."
 A delete button for each task that removes it from the list when clicked.
 Tasks are saved in Local Storage so they persist even after the page is refreshed.
-<<<<<<< HEAD
 
 13 May 2025
 Added the ability to edit existing tasks.
 Each task now has an "Edit" button.
 Clicking "Edit" allows users to modify the task content.
 After editing, the changes are updated in the list and saved to Local Storage.
-=======
->>>>>>> 4d4350b97f95fa02ae762549d502c1787e1dc5bb
