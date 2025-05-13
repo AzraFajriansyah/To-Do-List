@@ -71,3 +71,20 @@ header {
 .task-item .delete-btn:hover {
     background-color: #a71d2a;
 }
+
+.task-actions button {
+    margin-left: 8px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
