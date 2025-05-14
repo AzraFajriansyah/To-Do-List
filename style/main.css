@@ -95,3 +95,25 @@ header {
     color: #666;
     font-style: italic;
 }
+
+.task-priority {
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+}
+
+.task-priority.rendah {
+    background-color: #28a745; /* Hijau */
+}
+
+.task-priority.sedang {
+    background-color: #ffc107; /* Kuning */
+    color: #333;
+}
+
+.task-priority.tinggi {
+    background-color: #dc3545; /* Merah */
+}

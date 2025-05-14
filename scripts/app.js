@@ -8,9 +8,10 @@ window.addEventListener("load", loadTasks);
 addTaskBtn.addEventListener("click", () => {
     const taskText = taskInput.value.trim();
     const taskCategory = document.getElementById("task-category").value;
+    const taskPriority = document.getElementById("task-priority").value;
 
     if (taskText !== "") {
-        const taskObj = { text: taskText, category: taskCategory };
+        const taskObj = { text: taskText, category: taskCategory, priority: taskPriority };
         addTaskToList(taskObj);
         saveTask(taskObj);
         taskInput.value = "";
@@ -27,6 +28,11 @@ function addTaskToList(task){
     const categoryTag = document.createElement("span");
     categoryTag.className = "task-category";
     categoryTag.textContent = `[${task.category}]`;
+
+    const priorityTag = document.createElement("span");
+    const priority = task.priority || "Rendah"; // default jika undefined
+    priorityTag.className = `task-priority ${task.priority.toLowerCase()}`;
+    priorityTag.textContent = priority;
 
     const actions = document.createElement("div");
     actions.className = "task-actions";
@@ -60,6 +66,7 @@ function addTaskToList(task){
 
     taskItem.appendChild(textSpan);
     taskItem.appendChild(categoryTag);
+    taskItem.appendChild(priorityTag);
     taskItem.appendChild(actions);
     taskList.appendChild(taskItem);
 }
@@ -81,11 +88,11 @@ function removeTask(taskText) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function updateTask(oldTask, newTask) {
+function updateTask(oldText, newText) {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const index = tasks.findIndex(task => task.text === oldTask);
+    const index = tasks.findIndex(task => task.text === oldText);
     if (index !== -1) {
-        tasks[index].text = newTask;
+        tasks[index].text = newText;
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 }
