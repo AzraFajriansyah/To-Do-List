@@ -11,8 +11,29 @@ A simple and functional To-Do List application built using **HTML**, **CSS**, an
 - 🎯 Set priority levels (Low / Medium / High)
 - ✏️ Edit existing tasks
 - 🗑 Delete tasks
+- 📅 Set deadlines for each task
 - 💾 Tasks are saved to **Local Storage** and persist after refreshing
-- 🎨 Clean and simple UI for ease of use
+
+---
+
+## 🛠 How to Use
+
+1. Clone or download this repository.
+2. Open `index.html` in your browser.
+3. Add a new task using the form by entering:
+   - Task title
+   - Category
+   - Priority level
+4. Click **"Add Task"**.
+5. Edit or delete tasks using the corresponding buttons.
+
+---
+
+## 🧪 Tech Stack
+
+- HTML
+- CSS
+- JavaScript
 
 ---
 
@@ -57,34 +78,10 @@ project-root/
   - Priorities are shown with visual cues (e.g., color tags)
   - Data saved along with the task in Local Storage
 
----
-
-## 🛠 How to Use
-
-1. Clone or download this repository.
-2. Open `index.html` in your browser.
-3. Add a new task using the form by entering:
-   - Task title
-   - Category
-   - Priority level
-4. Click **"Add Task"**.
-5. Edit or delete tasks using the corresponding buttons.
-
----
-
-## 🧪 Tech Stack
-
-- HTML
-- CSS
-- JavaScript
-
----
-
-## 📌 Future Improvements
-
-- [ ] Add due dates and deadlines
-- [ ] Filter tasks by category or priority
-- [ ] Drag and drop task ordering
-- [ ] Dark mode toggle
+### 15 May 2025
+- Added Task Deadline feature:
+  - Users can now assign a deadline (due date) to each task using a date picker.
+  - Deadlines are displayed alongside each task.
+  - Tasks with deadlines are saved to Local Storage.
 
 ---

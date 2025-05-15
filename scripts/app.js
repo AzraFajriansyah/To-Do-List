@@ -9,9 +9,15 @@ addTaskBtn.addEventListener("click", () => {
     const taskText = taskInput.value.trim();
     const taskCategory = document.getElementById("task-category").value;
     const taskPriority = document.getElementById("task-priority").value;
+    const taskDeadline = document.getElementById("task-deadline").value;
 
     if (taskText !== "") {
-        const taskObj = { text: taskText, category: taskCategory, priority: taskPriority };
+        const taskObj = { 
+            text: taskText,
+            category: taskCategory,
+            priority: taskPriority,
+            deadline: taskDeadline
+        };
         addTaskToList(taskObj);
         saveTask(taskObj);
         taskInput.value = "";
@@ -33,6 +39,12 @@ function addTaskToList(task){
     const priority = task.priority || "Rendah"; // default jika undefined
     priorityTag.className = `task-priority ${task.priority.toLowerCase()}`;
     priorityTag.textContent = priority;
+
+    const deadlineText = task.deadline ? new Date(task.deadline).toLocaleString() : "Tidak ada deadline";
+
+    const deadlineSpan = document.createElement("span");
+    deadlineSpan.className = "task-deadline";
+    deadlineSpan.textContent = `Deadline: ${deadlineText}`;
 
     const actions = document.createElement("div");
     actions.className = "task-actions";
@@ -67,6 +79,7 @@ function addTaskToList(task){
     taskItem.appendChild(textSpan);
     taskItem.appendChild(categoryTag);
     taskItem.appendChild(priorityTag);
+    taskItem.appendChild(deadlineSpan);
     taskItem.appendChild(actions);
     taskList.appendChild(taskItem);
 }
